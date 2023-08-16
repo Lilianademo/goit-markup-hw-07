@@ -28,6 +28,7 @@ body {
   padding-top: 24px;
   padding-bottom: 25px;
 }
+
 .menu-section {
   padding-left: 15px;
   padding-right: 15px;
@@ -72,19 +73,133 @@ body {
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
 }
-.menu-box{
+
+.menu-box {
   position: fixed;
   top: 0px;
   left: 0px;
-  width: 100vh;
+  width: 100vw;
+  height: 100vh;
   padding: 10px 15px;
   background-color: #ffffff;
   z-index: 10;
   transform: translateX(100%);
+  transition: transform 250ms ease-in-out;
+  padding: 30px;
+}
+.menu-box.is-open {
+  transform: translateX(0);
+}
+.menu-toggle {
+  min-height: 40px;
+  min-width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  border-radius: 50%;
+  outline: none;
+  color: #212121;
+}
+.menu-toggle.js-close-menu {
+  z-index: 1;
+  position: absolute;
+  top: 10px;
+  right: 15px;
+}
+.menu-toggle > svg {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+}
+.menu-toggle > svg:hover {
+  fill: #2196f3;
+  cursor: pointer;
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-.menu-box.is-open{
-  transform: translateX(0);
+.menu-box {
+  list-style: none;
+}
+.menu-list-mob {
+  color: #212121;
+  font-family: Roboto;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.8px;
+  gap: 32px;
+  margin-bottom: 306px;
+  display: flex;
+  flex-direction: column;
+}
+.mobile-meniu-section {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+}
+.list-mob,
+.mobile-menu-section,
+.contact-mob {
+  list-style: none;
+}
+.list-mob .active-menu {
+  color: #212121;
+  text-decoration: none;
+}
+.list-mob .active-menu:hover {
+  color: #2196f3;
+  cursor: pointer;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.contact-mob-mob {
+  color: #2196f3;
+  text-decoration: none;
+  font-family: Roboto;
+  font-size: 34px;
+  letter-spacing: 0.68px;
+}
+.mobile-menu-section {
+  display: flex;
+  flex-direction: column;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  gap: 32px;
+  margin-bottom: 64px;
+}
+.contact-mob-email {
+  color: #757575;
+  text-decoration: none;
+  font-family: Roboto;
+  font-size: 24px;
+  letter-spacing: 0.48px;
+}
+.contact-mob {
+  margin-top: 20px;
+  color: #2196f3;
+  font-family: Roboto;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 22px;
+  letter-spacing: 0.36px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.link-nav-mob .icon-social {
+  text-decoration: none;
+  color: #2196f3;
+}
+.mob-line {
+  width: 1px;
+  height: 22px;
+  background: #21212133;
 }
 .navigation-list,
 .right-navigation-list {
@@ -103,21 +218,13 @@ body {
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
   align-items: center;
 }
-.page-heder,
-.main-section,
-.What-we-do,
-.team-section,
-.footer-page,
-.section-projects-img {
-  max-width: 1600px;
-  margin: 0 auto;
-}
-.mobile-menu-links{
+
+.mobile-menu-links {
   color: #212121;
   font-family: Roboto;
   font-style: normal;
   letter-spacing: 0.8px;
-  gap:32px;
+  gap: 32px;
   margin-bottom: 306px;
   display: flex;
   flex-direction: column;
@@ -219,10 +326,18 @@ body {
   text-transform: uppercase;
   color: #212121;
 }
+.subtitle-section {
+  display: flex;
+  margin: 0px 0px 0px 0px;
+}
 .our-values {
   display: flex;
   gap: 30px;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
   justify-content: center;
+  margin: 0 auto;
 }
 .text-section {
   font-weight: 400;
@@ -232,7 +347,6 @@ body {
   color: #757575;
 }
 .activiti-section,
-.our-team-section,
 .regular-customers {
   font-weight: 700;
   font-size: 36px;
@@ -241,29 +355,22 @@ body {
   letter-spacing: 0.03em;
   color: #212121;
 }
-.what-section,
+.what-section {
+  display: none;
+}
 .customers {
   display: flex;
   flex-direction: column;
   gap: 30px;
 }
-.images-activiti,
-.icon-list-customers {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-}
+
 .team-section {
   background: #f5f4fa;
 }
 .team-section {
   display: flex;
   flex-direction: column;
-  gap: 30px;
-}
-.images-team {
-  display: flex;
-  justify-content: center;
+  align-items: center;
   gap: 30px;
 }
 .our-specialists {
@@ -274,6 +381,11 @@ body {
   padding-top: 30px;
   padding-bottom: 30px;
   background-color: #ffffff;
+}
+.our-team-section{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .name-section {
   font-weight: 500;
@@ -291,11 +403,25 @@ body {
   letter-spacing: 0.03em;
   color: #757575;
 }
+.icon-list-customers{
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto;
+  padding: 15px;
+}
 .footer-page {
   background: #2f303a;
 }
-.footer-list li {
-  display: inline-block;
+.footer-list li{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #2f303a;
 }
 
 .address-section {
@@ -590,7 +716,8 @@ section {
 .right-side-footer {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  justify-items: center;
+  align-items: center;
 }
 .left-side-footer {
   display: inline-block;
@@ -923,6 +1050,22 @@ textarea:hover {
       height: 480px;
       background-size: 640px 480px;
     }
+    .our-values {
+      display: inline-block;
+    }
+  }
+  .menu-button {
+    display: none;
+  }
+  .navigation-list,
+  .right-navigation-list {
+    display: flex;
+    gap: 32px;
+    padding-bottom: 25px;
+    padding-top: 32px;
+  }
+  .right-navigation-list {
+    flex-direction: column;
   }
 }
 /*desktop design*/
@@ -935,14 +1078,45 @@ textarea:hover {
   .body {
     width: 1600px;
   }
-  .navigation-list,
   .right-navigation-list {
+    flex-direction: row;
+  }
+  .our-values {
     display: flex;
-    gap: 32px;
-    padding-bottom: 25px;
-    padding-top: 32px;
+    flex-direction: row;
   }
-  .menu-button {
-    display: none;
+  .what-section {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
   }
+  .page-heder,
+  .main-section,
+  .What-we-do,
+  .team-section,
+  .footer-page,
+  .section-projects-img {
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+  .images-team {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+  }
+  .images-activiti,
+.icon-list-customers {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+.footer-list li {
+  display: inline-block;
+}
+.right-side-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
 }
